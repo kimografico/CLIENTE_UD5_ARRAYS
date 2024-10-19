@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UD5 - Arrays</title>
+</head>
+
+<body>
+
+    <script>
+        console.log("----- EJERCICIO 1 -----");
+        let paises = ["España", "Francia", "Alemania", "Italia"];
+        for (let pais of paises) {
+            console.log(pais);
+        }
+
+        console.log("");
+        paises.shift();
+        for (let pais of paises) {
+            console.log(pais);
+        }
+
+        console.log("\n\n\n\n----- EJERCICIO 2 -----");
+        let letras = [];
+        letras.unshift("A", "B", "C");
+        letras.push("D", "E");
+        letras.shift();
+        letras.pop();
+        console.log(letras);
+
+        console.log("\n\n\n\n----- EJERCICIO 3 -----");
+        let data = [
+            { name: "Nacho", telephone: "966112233", age: 40 },
+            { name: "Ana", telephone: "911223344", age: 35 },
+            { name: "Mario", phone: "611998877", age: 15 },
+            { name: "Laura", telephone: "633663366", age: 17 }
+        ];
+        data.push(
+            { name: "Pedro", telephone: "611944444", age: 25 },
+            { name: "Julia", phone: "633232323", age: 37 }
+        );
+        console.log(data);
+
+        console.log("");
+        data.sort(function (a, b) {
+            return a.age - b.age;
+        });
+        console.log(data);
+
+        console.log("");
+        data.sort(function (a, b) {
+            if (a.name > b.name) {
+                return 1;
+            } else {
+                return -1;
+            }
+        });
+        console.log(data);
+
+        console.log("");
+        console.log(data.filter(function (persona) {
+            return persona.age > 30;
+        }));
+
+
+        console.log("\n\n\n\n----- EJERCICIO 4 -----");
+        let numeros = [9, 5, 8, 7, 3, 6, 4, 1, 0];
+        console.log("numeros: " + numeros);
+        let [numA, numB, ...resto] = [...numeros];
+        console.log("A: " + numA);
+        console.log("B: " + numB);
+        console.log("R: " + resto);
+
+        console.log("\n\n\n\n----- EJERCICIO 5 -----");
+        let valores = [9, 7, 3, 7, 3, 6, 6, 3, 9];
+        let valoresUnicos = new Set(valores);
+        valoresUnicos = [...valoresUnicos]
+        console.log("Valores: " + valoresUnicos);
+
+        console.log("\n\n\n\n----- EJERCICIO 6 -----");
+        let personas = new Map([
+            ['Elsa', 5],
+            ['Bagheera', 1],
+            ['Mar', 40],
+            ['Kimo', 39]
+        ]);
+        personas.set("Juanjo", 34);
+        personas.set("Marina", 23);
+        personas.set("Marina", 24);
+
+        for (let [nombre, edad] of personas) {
+            console.log(`${nombre}, ${edad} años`); // No entiendo lo de las comillas invertidas, pero con las simples o dobles no funciona
+        }
+
+
+        console.log("\n\n\n\n----- EJERCICIO 7 -----");
+        combinaciones = new Set();
+        while (combinaciones.size < 50) {
+            let combinacion = new Set();
+            while (combinacion.size < 6) {
+                combinacion.add(Math.floor(Math.random() * (50 - 1)) + 1)
+            }
+            combinaciones.add(combinacion);
+        }
+
+        combinaciones.forEach(function (num) {
+            // console.log(...num);
+            console.log("Combinación: " + [...num].join(", "));
+        });
+
+
+
+        console.log("\n\n\n\n----- EJERCICIO 8 -----");
+        let numRand = [];
+        for (let i = 0; i < 10000; i++) {
+            let number = (Math.floor(Math.random() * 10))
+            numRand.push(number);
+        }
+
+        let numRandCount = [];
+        for (let i = 0; i < 10; i++) {
+            numRandCount[i] = numRand.filter(function (num) {
+                return num == [i];
+            }).length;
+        }
+
+        console.log(
+            "FRECUENCIA" +
+            "\nNúmero  1: " + numRandCount[0] +
+            "\nNúmero  2: " + numRandCount[1] +
+            "\nNúmero  3: " + numRandCount[2] +
+            "\nNúmero  4: " + numRandCount[3] +
+            "\nNúmero  5: " + numRandCount[4] +
+            "\nNúmero  6: " + numRandCount[5] +
+            "\nNúmero  7: " + numRandCount[6] +
+            "\nNúmero  8: " + numRandCount[7] +
+            "\nNúmero  9: " + numRandCount[8] +
+            "\nNúmero 10: " + numRandCount[9]
+        );
+
+
+
+    </script>
+</body>
+
+</html>
